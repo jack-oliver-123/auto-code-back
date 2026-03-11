@@ -1,0 +1,18 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /api
+spring:
+  application:
+    name: auto-code
+# springdoc-openapi\u9879\u76EE\u914D\u7F6E
+springdoc:
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.xiaominfo.knife4j.demo.web
+# knife4j\u7684\u589E\u5F3A\u914D\u7F6E
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
