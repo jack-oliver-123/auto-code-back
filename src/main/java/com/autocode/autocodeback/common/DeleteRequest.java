@@ -2,6 +2,7 @@ package com.autocode.autocodeback.common;
 
 import lombok.Data;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -12,11 +13,12 @@ import java.io.Serializable;
  */
 @Data
 public class DeleteRequest implements Serializable {
-
+    
     /**
      * 待删除资源的唯一标识 ID
      */
     private Long id;
-
+    
+    @Serial
     private static final long serialVersionUID = 1L;
 }

@@ -2,6 +2,7 @@ package com.autocode.autocodeback.common;
 
 import lombok.Data;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -15,24 +16,25 @@ import java.io.Serializable;
  */
 @Data
 public class BaseResponse<T> implements Serializable {
-
+    
+    @Serial
     private static final long serialVersionUID = 1L;
-
+    
     /**
      * 状态码
      */
     private int code;
-
+    
     /**
      * 响应数据
      */
     private T data;
-
+    
     /**
      * 响应信息
      */
     private String message;
-
+    
     /**
      * 全参构造器
      *
@@ -45,7 +47,7 @@ public class BaseResponse<T> implements Serializable {
         this.data = data;
         this.message = message;
     }
-
+    
     /**
      * 带状态码和数据的构造器，信息默认为空字符串
      *
@@ -55,7 +57,7 @@ public class BaseResponse<T> implements Serializable {
     public BaseResponse(int code, T data) {
         this(code, data, "");
     }
-
+    
     /**
      * 通过标准状态码构造（无数据）
      *
@@ -64,7 +66,7 @@ public class BaseResponse<T> implements Serializable {
     public BaseResponse(StatusCode status) {
         this(status.getCode(), null, status.getMessage());
     }
-
+    
     /**
      * 通过标准状态码和自定义信息构造（无数据）
      *
@@ -74,7 +76,7 @@ public class BaseResponse<T> implements Serializable {
     public BaseResponse(StatusCode status, String message) {
         this(status.getCode(), null, message);
     }
-
+    
     /**
      * 通过标准状态码和数据构造，信息取自状态码默认值
      *
@@ -84,7 +86,7 @@ public class BaseResponse<T> implements Serializable {
     public BaseResponse(StatusCode status, T data) {
         this(status.getCode(), data, status.getMessage());
     }
-
+    
     /**
      * 通过标准状态码、数据和自定义信息构造
      *

@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Hidden;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 /**
  * 全局异常处理器
@@ -19,7 +20,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
-
+    
+    @ExceptionHandler(NoResourceFoundException.class)
+    public void handleNoResourceFoundException(NoResourceFoundException e) {
+        // 啥都不干，或者只记录一行 trace 日志
+        // 这样控制台就不会炸出一大堆 ERROR 堆栈了
+    }
+    
     /**
      * 处理自定义业务异常
      * <p>
@@ -34,7 +41,7 @@ public class GlobalExceptionHandler {
         log.error("BusinessException: code={}, message={}", e.getCode(), e.getMessage(), e);
         return ResultUtils.error(e.getCode(), e.getMessage());
     }
-
+    
     /**
      * 处理运行时异常
      * <p>
@@ -50,7 +57,7 @@ public class GlobalExceptionHandler {
         log.error("RuntimeException", e);
         return ResultUtils.error(StatusCode.FAILED_RUN, "运行错误");
     }
-
+    
     /**
      * 兜底异常处理
      * <p>

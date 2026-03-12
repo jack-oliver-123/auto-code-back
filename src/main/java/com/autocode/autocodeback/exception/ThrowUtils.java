@@ -14,13 +14,13 @@ import com.autocode.autocodeback.common.StatusCode;
  * </pre>
  */
 public class ThrowUtils {
-
+    
     /**
      * 私有构造器，防止工具类被实例化
      */
     private ThrowUtils() {
     }
-
+    
     /**
      * 条件成立则抛出指定的运行时异常
      *
@@ -32,7 +32,7 @@ public class ThrowUtils {
             throw runtimeException;
         }
     }
-
+    
     /**
      * 条件成立则抛出标准状态码对应的业务异常
      *
@@ -42,7 +42,7 @@ public class ThrowUtils {
     public static void throwIf(boolean condition, StatusCode errorCode) {
         throwIf(condition, new BusinessException(errorCode));
     }
-
+    
     /**
      * 条件成立则抛出标准状态码配合自定义消息的业务异常
      *

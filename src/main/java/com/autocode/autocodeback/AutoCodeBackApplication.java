@@ -1,5 +1,6 @@
 package com.autocode.autocodeback;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -15,8 +16,9 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  */
 @SpringBootApplication
 @EnableAspectJAutoProxy(exposeProxy = true)
+@MapperScan("com.autocode.autocodeback.mapper")
 public class AutoCodeBackApplication {
-
+    
     /**
      * 应用程序入口方法
      *
